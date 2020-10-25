@@ -1,104 +1,226 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CentOS 7 x64 利用宝塔安装gitea - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
-  <title>CentOS 7 x64 利用宝塔安装gitea | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="准备阶段 准备域名并解析到服务器IP（code.demo.com –&gt; IP)  确保宝塔已经安装并安装好lnmp环境  确保mySQL版本至少为5.5.3  安装git  首先检查CentOS 7系统中安装的git版本： 1git --version  git version 1.8.3.1     从IUS存储库安装git的方法   IUS是一个社区项目，为Enterprise Linu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CentOS 7 x64 利用宝塔安装gitea">
-<meta property="og:url" content="http://example.com/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="准备阶段 准备域名并解析到服务器IP（code.demo.com –&gt; IP)  确保宝塔已经安装并安装好lnmp环境  确保mySQL版本至少为5.5.3  安装git  首先检查CentOS 7系统中安装的git版本： 1git --version  git version 1.8.3.1     从IUS存储库安装git的方法   IUS是一个社区项目，为Enterprise Linu">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/Snipaste_2020-02-22_12-01-26.png">
-<meta property="og:image" content="http://example.com/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/Snipaste_2020-02-25_21-54-52.png">
-<meta property="article:published_time" content="2020-10-25T16:26:23.000Z">
-<meta property="article:modified_time" content="2020-10-25T16:34:11.977Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="CentOS">
-<meta property="article:tag" content="宝塔">
-<meta property="article:tag" content="gitea">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/Snipaste_2020-02-22_12-01-26.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-25 12:26" pubdate>
+        2020年10月25日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
       </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-CentOS-7-x64-利用宝塔安装gitea" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/" class="article-date">
-  <time datetime="2020-10-25T16:26:23.000Z" itemprop="datePublished">2020-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BB%93%E5%BA%93/">仓库</a>
-  </div>
+  </header>
 
-  </div>
-  <div class="article-inner">
+  <main>
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      CentOS 7 x64 利用宝塔安装gitea
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><ul>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CentOS 7 x64 利用宝塔安装gitea</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><ul>
 <li><p>准备域名并解析到服务器IP（code.demo.com –&gt; <code>IP</code>)</p>
 </li>
 <li><p>确保宝塔已经安装并安装好lnmp环境</p>
@@ -108,7 +230,7 @@
 <li><p>安装git</p>
 </li>
 <li><p>首先检查CentOS 7系统中安装的git版本：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">git --version</code></pre>
 
 <p>git version 1.8.3.1</p>
 </li>
@@ -116,24 +238,27 @@
 <p>  <strong>从IUS存储库安装git的方法</strong></p>
 <p>  IUS是一个社区项目，为Enterprise Linux发行版的新版精选软件提供RPM包，该项目的目的是为红帽企业Linux（RHEL）和CentOS创建高质量的RPM包。</p>
 <p>  1、删除旧的git：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove git</span><br></pre></td></tr></table></figure>
+  <pre><code class="hljs shell">sudo yum remove git</code></pre>
 
 <p>  2、添加IUS CentOS 7 repo：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install  https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">sudo yum install  git2u-all</span><br></pre></td></tr></table></figure>
+  <pre><code class="hljs shell">sudo yum install  https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum install  git2u-all</code></pre>
 
 <p>  安装git2u-all软件包后检查git版本：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+  <pre><code class="hljs shell">git --version</code></pre>
 
 <p>  git version 2.16.5</p>
 <p>  如上所述，当前版本Git是2.16.5，如果要安装最新的Git版本，最好是下载源代码并安装。</p>
 <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ul>
 <li><p>在宝塔中新建网站code.demo.com，创建数据库MySQL，字符集选择utf8_general_ci</p>
-<p><img src="Snipaste_2020-02-22_12-01-26.png" alt="Snipaste_2020-02-22_12-01-26"></p>
+<p><img src="Snipaste_2020-02-22_12-01-26.png" srcset="/img/loading.gif" alt="Snipaste_2020-02-22_12-01-26"></p>
 <p>远程下载gitea</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /www/wwwroot/code.demo.com/</span><br><span class="line">wget -O gitea https://dl.gitea.io/gitea/master/gitea-master-linux-amd64</span><br><span class="line">chmod +x gitea</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">cd /www/wwwroot/code.demo.com/
+wget -O gitea https://dl.gitea.io/gitea/master/gitea-master-linux-amd64
+chmod +x gitea</code></pre>
 
 <p>成功之后运行gitea，访问<code>http://ip:3000</code>即可测试。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gitea web</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">./gitea web</code></pre>
 
 
 </li>
@@ -141,153 +266,422 @@
 <ul>
 <li>在DNS服务商处绑定code.demo.com到服务器IP地址后，打开宝塔面板网站的SSL，使用Let’s Encrypt进行证书签名</li>
 </ul>
-<p><img src="Snipaste_2020-02-25_21-54-52.png" alt="Snipaste_2020-02-25_21-54-52"></p>
+<p><img src="Snipaste_2020-02-25_21-54-52.png" srcset="/img/loading.gif" alt="Snipaste_2020-02-25_21-54-52"></p>
 <ul>
 <li>接着打开宝塔网站的配置文件，示例配置文件内容如下：</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">	listen 443 ssl http2;</span><br><span class="line">	listen 80;</span><br><span class="line">	  client_max_body_size 100000m;</span><br><span class="line">    server_name code.demo.com;</span><br><span class="line">    index index.php index.html index.htm default.php default.htm default.html;</span><br><span class="line">    root /www/wwwroot/code.demo.com;</span><br><span class="line">    </span><br><span class="line">    #SSL-START SSL相关配置，请勿删除或修改下一行带注释的404规则</span><br><span class="line">    #error_page 404/404.html;</span><br><span class="line">    #HTTP_TO_HTTPS_START</span><br><span class="line">    if ($server_port !~ 443)&#123;</span><br><span class="line">        rewrite ^(/.*)$ https://$host$1 permanent;</span><br><span class="line">    &#125;</span><br><span class="line">    #HTTP_TO_HTTPS_END</span><br><span class="line">    ssl_certificate    /www/server/panel/vhost/cert/code.demo.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key    /www/server/panel/vhost/cert/code.demo.com/privkey.pem;</span><br><span class="line">    ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line">    ssl_session_timeout 10m;</span><br><span class="line">    error_page 497  https://$host$request_uri;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    #SSL-END</span><br><span class="line">    </span><br><span class="line">    #ERROR-PAGE-START  错误页配置，可以注释、删除或修改</span><br><span class="line">    #error_page 404 /404.html;</span><br><span class="line">    #error_page 502 /502.html;</span><br><span class="line">    #ERROR-PAGE-END</span><br><span class="line">    </span><br><span class="line">    #PHP-INFO-START  PHP引用配置，可以注释或修改</span><br><span class="line">    # include enable-php-00.conf;</span><br><span class="line">    #PHP-INFO-END</span><br><span class="line">    </span><br><span class="line">    #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效</span><br><span class="line">    # include /www/server/panel/vhost/rewrite/code.demo.com.conf;</span><br><span class="line">    #REWRITE-END</span><br><span class="line">    </span><br><span class="line">    #禁止访问的文件或目录</span><br><span class="line">    location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md)</span><br><span class="line">    &#123;</span><br><span class="line">        return 404;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    #一键申请SSL证书验证目录相关设置</span><br><span class="line">    location ~ \.well-known&#123;</span><br><span class="line">        allow all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      30d;</span><br><span class="line">        error_log off;</span><br><span class="line">        access_log /dev/null;</span><br><span class="line">        proxy_pass http://127.0.0.1:3000;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      12h;</span><br><span class="line">        error_log off;</span><br><span class="line">        access_log /dev/null; </span><br><span class="line">        proxy_pass http://127.0.0.1:3000;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass      http://127.0.0.1:3000;</span><br><span class="line">        proxy_redirect      off;</span><br><span class="line">        proxy_set_header Host      $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    access_log  /www/wwwlogs/code.demo.com.log;</span><br><span class="line">    error_log  /www/wwwlogs/code.demo.com.error.log;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">server
+&#123;
+	listen 443 ssl http2;
+	listen 80;
+	  client_max_body_size 100000m;
+    server_name code.demo.com;
+    index index.php index.html index.htm default.php default.htm default.html;
+    root /www/wwwroot/code.demo.com;
+    
+    #SSL-START SSL相关配置，请勿删除或修改下一行带注释的404规则
+    #error_page 404/404.html;
+    #HTTP_TO_HTTPS_START
+    if ($server_port !~ 443)&#123;
+        rewrite ^(/.*)$ https://$host$1 permanent;
+    &#125;
+    #HTTP_TO_HTTPS_END
+    ssl_certificate    /www/server/panel/vhost/cert/code.demo.com/fullchain.pem;
+    ssl_certificate_key    /www/server/panel/vhost/cert/code.demo.com/privkey.pem;
+    ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    error_page 497  https://$host$request_uri;
+
+
+
+    #SSL-END
+    
+    #ERROR-PAGE-START  错误页配置，可以注释、删除或修改
+    #error_page 404 /404.html;
+    #error_page 502 /502.html;
+    #ERROR-PAGE-END
+    
+    #PHP-INFO-START  PHP引用配置，可以注释或修改
+    # include enable-php-00.conf;
+    #PHP-INFO-END
+    
+    #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效
+    # include /www/server/panel/vhost/rewrite/code.demo.com.conf;
+    #REWRITE-END
+    
+    #禁止访问的文件或目录
+    location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md)
+    &#123;
+        return 404;
+    &#125;
+    
+    #一键申请SSL证书验证目录相关设置
+    location ~ \.well-known&#123;
+        allow all;
+    &#125;
+    
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico)$
+    &#123;
+        expires      30d;
+        error_log off;
+        access_log /dev/null;
+        proxy_pass http://127.0.0.1:3000;
+    &#125;
+    
+    location ~ .*\.(js|css)?$
+    &#123;
+        expires      12h;
+        error_log off;
+        access_log /dev/null; 
+        proxy_pass http://127.0.0.1:3000;
+    &#125;
+    
+    location / &#123;
+        proxy_pass      http://127.0.0.1:3000;
+        proxy_redirect      off;
+        proxy_set_header Host      $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        &#125;
+    
+    access_log  /www/wwwlogs/code.demo.com.log;
+    error_log  /www/wwwlogs/code.demo.com.error.log;
+    
+&#125;</code></pre>
 
 <p>其中<code>proxy_pass        http://127.0.0.1:3000</code>用来代理访问3000端口的请求。</p>
 <ul>
 <li>新建一个systemd服务文件，内容如下：</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">[unit]</span><br><span class="line">Description=Gitea (Git with a cup of tea)</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line">After=mysqld.service</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">&#x27;t forget to add the database service requirements</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=mysql.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=mariadb.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=postgresql.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=memcached.service</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=redis.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If using socket activation <span class="keyword">for</span> main http/s</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=gitea.main.socket</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=gitea.main.socket</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (You can also provide gitea an http fallback and/or ssh socket too)</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> An example of /etc/systemd/system/gitea.main.socket</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Unit]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Description=Gitea Web Socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PartOf=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Socket]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Service=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># ListenStream=&lt;some_port&gt;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># NoDelay=true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Install]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># WantedBy=sockets.target</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"><span class="meta">#</span><span class="bash"> Modify these two values and uncomment them <span class="keyword">if</span> you have</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> repos with lots of files and get an HTTP error 500 because</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> of that</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">LimitMEMLOCK=infinity</span></span><br><span class="line"><span class="meta">#</span><span class="bash">LimitNOFILE=65535</span></span><br><span class="line">RestartSec=2s</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line">WorkingDirectory=/www/wwwroot/code.demo.com/</span><br><span class="line"><span class="meta">#</span><span class="bash"> If using Unix socket: tells systemd to create the /run/gitea folder, <span class="built_in">which</span> will contain the gitea.sock file</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (manually creating /run/gitea doesn<span class="string">&#x27;t work, because it would not persist across reboots)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">RuntimeDirectory=gitea</span></span><br><span class="line">ExecStart=/www/wwwroot/code.demo.com/gitea web --config /www/wwwroot/code.demo.com/custom/conf/app.ini</span><br><span class="line">Restart=always</span><br><span class="line">Environment=USER=root HOME=/home/ GITEA_WORK_DIR=/www/wwwroot/code.demo.com/</span><br><span class="line"><span class="meta">#</span><span class="bash"> If you want to <span class="built_in">bind</span> Gitea to a port below 1024, uncomment</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the two values below, or use socket activation to pass Gitea its ports as above</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash">AmbientCapabilities=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">[unit]
+Description=Gitea (Git with a cup of tea)
+After=syslog.target
+After=network.target
+After=mysqld.service
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash"> Don<span class="hljs-string">&#x27;t forget to add the database service requirements</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=mysql.service</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=mariadb.service</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=postgresql.service</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=memcached.service</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=redis.service</span>
+<span class="hljs-meta">#</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash"> If using socket activation <span class="hljs-keyword">for</span> main http/s</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span>
+<span class="hljs-meta">#</span><span class="bash">After=gitea.main.socket</span>
+<span class="hljs-meta">#</span><span class="bash">Requires=gitea.main.socket</span>
+<span class="hljs-meta">#</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash"> (You can also provide gitea an http fallback and/or ssh socket too)</span>
+<span class="hljs-meta">#</span>
+<span class="hljs-meta">#</span><span class="bash"> An example of /etc/systemd/system/gitea.main.socket</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [Unit]</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Description=Gitea Web Socket</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># PartOf=gitea.service</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [Socket]</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># Service=gitea.service</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ListenStream=&lt;some_port&gt;</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># NoDelay=true</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># [Install]</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># WantedBy=sockets.target</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#</span></span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+
+[Service]
+<span class="hljs-meta">#</span><span class="bash"> Modify these two values and uncomment them <span class="hljs-keyword">if</span> you have</span>
+<span class="hljs-meta">#</span><span class="bash"> repos with lots of files and get an HTTP error 500 because</span>
+<span class="hljs-meta">#</span><span class="bash"> of that</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash">LimitMEMLOCK=infinity</span>
+<span class="hljs-meta">#</span><span class="bash">LimitNOFILE=65535</span>
+RestartSec=2s
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/www/wwwroot/code.demo.com/
+<span class="hljs-meta">#</span><span class="bash"> If using Unix socket: tells systemd to create the /run/gitea folder, <span class="hljs-built_in">which</span> will contain the gitea.sock file</span>
+<span class="hljs-meta">#</span><span class="bash"> (manually creating /run/gitea doesn<span class="hljs-string">&#x27;t work, because it would not persist across reboots)</span></span>
+<span class="hljs-meta">#</span><span class="bash">RuntimeDirectory=gitea</span>
+ExecStart=/www/wwwroot/code.demo.com/gitea web --config /www/wwwroot/code.demo.com/custom/conf/app.ini
+Restart=always
+Environment=USER=root HOME=/home/ GITEA_WORK_DIR=/www/wwwroot/code.demo.com/
+<span class="hljs-meta">#</span><span class="bash"> If you want to <span class="hljs-built_in">bind</span> Gitea to a port below 1024, uncomment</span>
+<span class="hljs-meta">#</span><span class="bash"> the two values below, or use socket activation to pass Gitea its ports as above</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+<span class="hljs-meta">#</span><span class="bash">CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span>
+<span class="hljs-meta">#</span><span class="bash">AmbientCapabilities=CAP_NET_BIND_SERVICE</span>
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##</span></span>
+
+[Install]
+WantedBy=multi-user.target</code></pre>
 
 <p>修改完毕后输入<code>:wq</code>退出vim编辑器。</p>
 <p>启动gitea并设置开机自动启动：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start gitea</span><br><span class="line">systemctl enable gitea</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">systemctl start gitea
+systemctl enable gitea</code></pre>
 
 <p>待以上步骤完成后，ssh到服务器重载设置文件并重启nginx服务：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nginx reload</span><br><span class="line">sudo /etc/init.d/nginx stop</span><br><span class="line">sudo /etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">sudo /etc/init.d/nginx reload
+sudo /etc/init.d/nginx stop
+sudo /etc/init.d/nginx start</code></pre>
 
 <p>现在打开浏览器访问 <a target="_blank" rel="noopener" href="https://code.demo.com/">https://code.demo.com</a> 即可进行gitea的安装过程了。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/" data-id="ckgpcauqs000204uaa3wi5e1w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitea/" rel="tag">gitea</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9D%E5%A1%94/" rel="tag">宝塔</a></li></ul>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%93%E5%BA%93/">仓库</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CentOS/">CentOS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9D%E5%A1%94/">宝塔</a>
+                    
+                      <a class="hover-with-bg" href="/tags/gitea/">gitea</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/25/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    </footer>
-  </div>
-  
+            
+          </article>
+        </div>
+      </div>
+    </div>
     
-<nav id="article-nav">
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
   
-  
-    <a href="/2020/10/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
-</nav>
 
   
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%93%E5%BA%93/">仓库</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitea/" rel="tag">gitea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9D%E5%A1%94/" rel="tag">宝塔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/gitea/" style="font-size: 10px;">gitea</a> <a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 10px;">宝塔</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/">CentOS 7 x64 利用宝塔安装gitea</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/25/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
   </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
 
-<script src="/js/script.js"></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CentOS 7 x64 利用宝塔安装gitea&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
