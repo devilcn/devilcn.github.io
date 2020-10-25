@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>playsnake - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="page-content">
+  <p>[TOC]</p>
+<h2 id="桌面版通讯工具"><a href="#桌面版通讯工具" class="headerlink" title="桌面版通讯工具"></a>桌面版通讯工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://files.teamspeak-services.com/releases/client/3.5.3/TeamSpeak3-Client-win64-3.5.3.exe">TeamSpeak Windows版 V3.5.3（推荐）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mumble.info/downloads/">Mumble Windows版 V1.3.2</a></li>
+<li>[Element端对端加密富媒体聊天软件（已弃用）](<a target="_blank" rel="noopener" href="https://packages.riot.im/desktop/install/win32/x64/Element">https://packages.riot.im/desktop/install/win32/x64/Element</a> (Riot) Setup 1.7.0.exe)</li>
+</ul>
+<h2 id="Teamspeak-Windows版使用方法"><a href="#Teamspeak-Windows版使用方法" class="headerlink" title="Teamspeak Windows版使用方法"></a>Teamspeak Windows版使用方法</h2><h3 id="下载准备"><a href="#下载准备" class="headerlink" title="下载准备"></a>下载准备</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://files.teamspeak-services.com/releases/client/3.5.3/TeamSpeak3-Client-win64-3.5.3.exe">TeamSpeak Windows版 V3.5.3 主程序</a></li>
+<li><a target="_blank" rel="noopener" href="https://1drv.ms/u/s!AnKAPZkp23m7gqpJUT9IhsBYghd11Q?e=B5ChEN">TeamSpeak Windows版中文汉化包(Optional)</a></li>
+<li><a target="_blank" rel="noopener" href="https://1drv.ms/u/s!AnKAPZkp23m7groi2BRNYake01gqkA?e=OJomLA">TeamSpeak Windows版中文语音包(Optional)</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>先安装主程序，再依次安装中文汉化包（可选）及中文语音包（可选）</p>
+<img src="https://i.loli.net/2020/10/25/ycN9HWMfolwQE2P.png" srcset="/img/loading.gif" alt="image-20201024165532877" style="zoom: 67%;" />
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="1-配置TeamSpeak账号"><a href="#1-配置TeamSpeak账号" class="headerlink" title="1. 配置TeamSpeak账号"></a>1. 配置TeamSpeak账号</h4><p>打开TeamSpeak客户端，选择<code>工具</code>–&gt; <code>设置</code></p>
+<img src="https://i.loli.net/2020/10/25/5jfEZgxkWVpUM1a.png" srcset="/img/loading.gif" alt="image-20201024170824841" style="zoom:67%;" />
+
+<p>选择<code>myTeamSpeak</code>，<code>创建账号</code>来完成账号创建并登陆</p>
+<img src="https://i.loli.net/2020/10/25/awqhrCgTLS17uzO.png" srcset="/img/loading.gif" alt="image-20201024171010811" style="zoom:67%;" />
+
+
+
+<h4 id="2-连接服务器"><a href="#2-连接服务器" class="headerlink" title="2. 连接服务器"></a>2. 连接服务器</h4><ul>
+<li><p>自动连接服务器（推荐）</p>
+<ul>
+<li><p>点击链接<a href="ts3server://ts.playsnakes.net?channel=默认空闲频道&server_uid=rtAC4KBCMrJBemzYs6D4YbI5bP0%3D">TS频道入口</a>，当浏览器弹出提示时点击<code>打开TeamSpeak 3 Client</code></p>
+<img src="https://i.loli.net/2020/10/25/tBEOsXaTkv3qIzG.png" srcset="/img/loading.gif" alt="image-20201024170008732" style="zoom: 67%;" />
+</li>
+<li><p>如果一切正常，TeamSpeak客户端将会自动连接到服务器，双击对应的频道以切换不同的音频频道</p>
+<p><img src="https://i.loli.net/2020/10/26/BLkiOoXMhTC3K2f.png" srcset="/img/loading.gif" alt="image-20201024171404394"></p>
+</li>
+</ul>
+</li>
+<li><p>手动连接服务器</p>
+<ul>
+<li><p>选择<code>连接</code>–&gt; <code>连接服务器</code></p>
+<img src="https://i.loli.net/2020/10/25/R8cEZ5LUYGkO9hp.png" srcset="/img/loading.gif" alt="image-20201024171712479" style="zoom:67%;" />
+</li>
+<li><p>在服务器别名或地址处输入“ts.playsnakes.net”, 昵称处输入自己的昵称后点击连接</p>
+<img src="https://i.loli.net/2020/10/25/7VM4coDqtNwfL2F.png" srcset="/img/loading.gif" alt="image-20201024171929926" style="zoom:67%;" />
+
+</li>
+</ul>
+</li>
+</ul>
+<p>至此，TeamSpeak基础配置已经完成。</p>
+<h3 id="进阶设置"><a href="#进阶设置" class="headerlink" title="进阶设置"></a>进阶设置</h3><h4 id="语音通话"><a href="#语音通话" class="headerlink" title="语音通话"></a>语音通话</h4><p>推荐使用音量激活，通过调整Volume Gate的值来达到只在自己说话的时候激活话筒，提高使用体验。</p>
+<img src="https://i.loli.net/2020/10/25/KgzhVLRjsOiMdHa.png" srcset="/img/loading.gif" alt="image-20201024172703146" style="zoom:67%;" />
+
+
+
+<h4 id="收藏夹"><a href="#收藏夹" class="headerlink" title="收藏夹"></a>收藏夹</h4><p>连接到服务器后选择<code>书签</code>–&gt; <code>添加到书签</code>来将当前服务器添加到书签。</p>
+<img src="https://i.loli.net/2020/10/25/Bi7TXxmMHRqZgUO.png" srcset="/img/loading.gif" alt="image-20201024173234244" style="zoom:67%;" />
+
+<p>下次使用时打开TeamSpeak软件，选择<code>书签</code>后即可点击已收藏的服务器快速连接。</p>
+<h2 id="服务入口"><a href="#服务入口" class="headerlink" title="服务入口"></a><strong>服务入口</strong></h2><ul>
+<li><p><a href="ts3server://ts.playsnakes.net?channel=默认空闲频道&server_uid=rtAC4KBCMrJBemzYs6D4YbI5bP0%3D">TS频道入口</a></p>
+<ul>
+<li>ts3server://ts.playsnakes.net?channel=%E9%BB%98%E8%AE%A4%E7%A9%BA%E9%97%B2%E9%A2%91%E9%81%93&amp;server_uid=rtAC4KBCMrJBemzYs6D4YbI5bP0%3D</li>
+</ul>
+</li>
+<li><p><a href="mumble://mumble.playsnakes.net?title=Root&version=1.2.0">Mumble频道入口</a></p>
+<ul>
+<li>mumble://mumble.playsnakes.net?title=Root&amp;version=1.2.0</li>
+</ul>
+</li>
+</ul>
+<h2 id="csgo配置文件参考"><a href="#csgo配置文件参考" class="headerlink" title="csgo配置文件参考"></a><strong>csgo配置文件参考</strong></h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://code.playsnakes.net/shenjingguai/CSGO_helpful_repo/releases">跑图训练模式专用cfg</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://code.playsnakes.net/shenjingguai/CSGO_helpful_repo/src/branch/master/backup/csgo_config/config.cfg">个人cfg备份</a></p>
+</li>
+</ul>
+<h2 id="在线聊天室（已废弃）"><a href="#在线聊天室（已废弃）" class="headerlink" title="在线聊天室（已废弃）"></a>在线聊天室（已废弃）</h2><ul>
+<li><p>社群地址：<a target="_blank" rel="noopener" href="https://app.element.io/#/group/+playsnakes:matrix.org">https://app.element.io/#/group/+playsnakes:matrix.org</a></p>
+</li>
+<li><p>加密聊天室：<a target="_blank" rel="noopener" href="https://app.element.io/#/room/#csgogogo:matrix.org">https://app.element.io/#/room/#csgogogo:matrix.org</a></p>
+</li>
+</ul>
+<p>玩儿的开心！</p>
+
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "playsnake&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
