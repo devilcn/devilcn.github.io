@@ -17,9 +17,25 @@
   <meta name="description" content="">
   <meta name="author" content="devilcn">
   <meta name="keywords" content="">
-  <title>标签 - Playsnakes Blog</title>
+  <title>DJ Man 控制指令 - Playsnakes Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,59 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/galaxy-3608029.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签">
+            <span class="h2" id="subtitle" title="DJ Man 控制指令">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-30 16:36" pubdate>
+        2020年11月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      141 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -161,24 +222,166 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DJ Man 控制指令</h1>
+            
+              <p class="note note-info">
                 
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="DJ-Man-控制指令"><a href="#DJ-Man-控制指令" class="headerlink" title="DJ Man 控制指令"></a>DJ Man 控制指令</h1><p>显示当前播放信息</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#playing</span></code></pre></div>
 
-<div class="text-center tagcloud">
-  <a href="/tags/CentOS/" style="font-size: 30px; color: #337ab7">CentOS</a> <a href="/tags/Discord/" style="font-size: 15px; color: #bbe">Discord</a> <a href="/tags/Mumble/" style="font-size: 15px; color: #bbe">Mumble</a> <a href="/tags/Music-Bot/" style="font-size: 15px; color: #bbe">Music Bot</a> <a href="/tags/TeamSpeak/" style="font-size: 22.5px; color: #779bd3">TeamSpeak</a> <a href="/tags/gitea/" style="font-size: 15px; color: #bbe">gitea</a> <a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 15px; color: #bbe">宝塔</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 22.5px; color: #779bd3">服务器</a> <a href="/tags/%E6%9D%83%E9%99%90/" style="font-size: 15px; color: #bbe">权限</a>
-</div>
+<p>下一首</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#next</span></code></pre></div>
 
-              </div>
+<p>上一首</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#prev</span></code></pre></div>
+
+<p>停止播放</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#stop</span></code></pre></div>
+
+<p>停止播放并清空闲时播放列表</p>
+<div class="hljs"><pre><code class="hljs clean">##stop</code></pre></div>
+
+<p>播放歌单</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#playlist <span class="hljs-meta-string">&lt;playlistname&gt;</span></span></code></pre></div>
+
+<p>按关键字搜索曲目</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#search <span class="hljs-meta-string">&lt;searchstring&gt;</span></span></code></pre></div>
+
+<p>音量调整</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#volume up</span>
+<span class="hljs-meta">#volume down</span></code></pre></div>
+
+<p>播放URL中的音乐（不支持YouTube）</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#stream <span class="hljs-meta-string">&lt;url&gt;</span></span></code></pre></div>
+
+<p>在当前播放队列后面插入YouTube音乐</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#qyt <span class="hljs-meta-string">&lt;url&gt;</span></span></code></pre></div>
+
+<p>直接播放YouTube音乐（会忽略当前播放列表）</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#yt <span class="hljs-meta-string">&lt;url&gt;</span></span></code></pre></div>
+
+<p>开启/关闭随机播放</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#shuffle</span></code></pre></div>
+
+<p>开启/关闭重复播放</p>
+<div class="hljs"><pre><code class="hljs vala"><span class="hljs-meta">#repeat</span></code></pre></div>
+
+
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%93%E5%BA%93/">仓库</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Music-Bot/">Music Bot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TeamSpeak/">TeamSpeak</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Discord/">Discord</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/26/TeamSpeak-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E5%85%A8%E6%B5%81%E7%A8%8B%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B2020%E5%B9%B410%E6%9C%88%E7%89%88/">
+                        <span class="hidden-mobile">TeamSpeak 3 服务器架设全流程新手教程2020年10月版</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "AfYi10DptdiGyndq36YeRwNQ-MdYXbMMI",
+          app_key: "605ooESFjkBMH7kjWXjBwhdC",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -285,9 +488,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
