@@ -19,7 +19,7 @@
   <meta name="keywords" content="">
   <title>在CentOS 7 x64中搭建Mumble语音服务器 - Playsnakes Blog</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -29,11 +29,14 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +53,10 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.playsnakes.net","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0"></head>
@@ -150,12 +157,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/galaxy-3608029.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在CentOS 7 x64中搭建Mumble语音服务器">
               
             </span>
 
@@ -223,17 +230,17 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">在CentOS 7 x64中搭建Mumble语音服务器</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：12 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
-            <div class="markdown-body" id="post-body">
+            <div class="markdown-body">
               <p>上篇介绍过在CentOS 7 x64上搭建TeamSpeak 3 服务器的全部流程，详情可以查看以下两篇专栏。</p>
 <p>今天我们来看另一款语音通讯服务Mumble。</p>
 <p>跟TeamSpeak 3 类似，Mumble是一款支持自行架设的语音通信软件，支持绝大多数操作系统（包括Android和iOS）。它的亮点是在保持高质量通信和加密的情况下，内置优秀的In-game Overlay，实测可以吊打TeamSpeak 3自带的Overwolf。另外的优秀之处在于它是一款开源软件，对同时在线人数并无限制。与之形成对比的是TeamSpeak 3 服务器免费使用的前提是只有一个实例且同时在线人数不超过32人。如果你需要搭建一个语音服务器同时需要多于32人同时在线，那Mumble是一个不错的选择。</p>
@@ -242,23 +249,23 @@
 <li>vim或nano或者其它你喜欢的编辑器</li>
 </ul>
 <h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p>以root用户运行，先是下载最新的release（<a target="_blank" rel="noopener" href="https://github.com/mumble-voip/mumble/releases">点这里查看最新release</a>），linux服务器版本murmur：</p>
-<pre><code class="hljs shell">wget https://github.com/mumble-voip/mumble/releases/download/1.3.0/murmur-static_x86-1.3.0.tar.bz2
+<div class="hljs"><pre><code class="hljs shell">wget https://github.com/mumble-voip/mumble/releases/download/1.3.0/murmur-static_x86-1.3.0.tar.bz2
 tar -vxjf ./murmur-static_x86-1.3.0.tar.bz2
 sudo mkdir /usr/local/murmur
 sudo cp -r ./murmur-static_x86-1.3.0/* /usr/local/murmur/
-sudo cp ./murmur-static_x86-1.3.0/murmur.ini /etc/murmur.ini</code></pre>
+sudo cp ./murmur-static_x86-1.3.0/murmur.ini /etc/murmur.ini</code></pre></div>
 
 <p>创建murmur用户和组等内容：</p>
-<pre><code class="hljs shell">sudo groupadd -r murmur
+<div class="hljs"><pre><code class="hljs shell">sudo groupadd -r murmur
 sudo useradd -r -g murmur -m -d /var/lib/murmur -s /sbin/nologin murmur
 sudo mkdir /var/log/murmur
 sudo chown murmur:murmur /var/log/murmur
-sudo chmod 0770 /var/log/murmur</code></pre>
+sudo chmod 0770 /var/log/murmur</code></pre></div>
 
-<h2 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h2><h3 id="修改murmur-ini中的内容"><a href="#修改murmur-ini中的内容" class="headerlink" title="修改murmur.ini中的内容"></a>修改<code>murmur.ini</code>中的内容</h3><pre><code class="hljs shell">vim /etc/murmur.ini</code></pre>
+<h2 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h2><h3 id="修改murmur-ini中的内容"><a href="#修改murmur-ini中的内容" class="headerlink" title="修改murmur.ini中的内容"></a>修改<code>murmur.ini</code>中的内容</h3><div class="hljs"><pre><code class="hljs shell">vim /etc/murmur.ini</code></pre></div>
 
 <p>在<code>murmur.ini</code>中，确保如下内容，其中host对应之前准备好的域名，serverpassword设为空时没有密码：</p>
-<pre><code class="hljs shell">database=/var/lib/murmur/murmur.sqlite
+<div class="hljs"><pre><code class="hljs shell">database=/var/lib/murmur/murmur.sqlite
 logfile=/var/log/murmur/murmur.log
 pidfile=/var/run/murmur/murmur.pid
 ...
@@ -266,12 +273,12 @@ port=64738
 ...
 uname=murmur
 host=mumble.demo.com
-serverpassword=demo</code></pre>
+serverpassword=demo</code></pre></div>
 
-<h3 id="创建murmur服务"><a href="#创建murmur服务" class="headerlink" title="创建murmur服务"></a>创建murmur服务</h3><pre><code class="hljs shell">sudo vim /etc/systemd/system/murmur.service</code></pre>
+<h3 id="创建murmur服务"><a href="#创建murmur服务" class="headerlink" title="创建murmur服务"></a>创建murmur服务</h3><div class="hljs"><pre><code class="hljs shell">sudo vim /etc/systemd/system/murmur.service</code></pre></div>
 
 <p>在<code>murmur.service</code>中填入以下内容，保存后退出：</p>
-<pre><code class="hljs shell">[Unit]
+<div class="hljs"><pre><code class="hljs shell">[Unit]
 Description=Mumble Server (Murmur)
 Requires=network-online.target
 After=network-online.target mariadb.service time-sync.target
@@ -286,20 +293,20 @@ RestartSec=15
 Restart=always
 
 [Install]
-WantedBy=multi-user.target</code></pre>
+WantedBy=multi-user.target</code></pre></div>
 
 <p>在很多系统中/var/run 会在重启后被清空。为了在重启后重新生成pid目录，以root权限创建配置文件：</p>
-<pre><code class="hljs shell">sudo vim /etc/tmpfiles.d/murmur.conf</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo vim /etc/tmpfiles.d/murmur.conf</code></pre></div>
 
 <p>在这个配置文件中写入：</p>
-<pre><code class="hljs shell">d /var/run/murmur 775 murmur murmur</code></pre>
+<div class="hljs"><pre><code class="hljs shell">d /var/run/murmur 775 murmur murmur</code></pre></div>
 
 <p>保存后退出。</p>
 <h3 id="日志轮替"><a href="#日志轮替" class="headerlink" title="日志轮替"></a>日志轮替</h3><p>为避免日志文件过多造成的困扰，创建配置文件：</p>
-<pre><code class="hljs shell">sudo vim/etc/logrotate.d/murmur</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo vim/etc/logrotate.d/murmur</code></pre></div>
 
 <p>写入以下内容，保存后退出：</p>
-<pre><code class="hljs shell">/var/log/murmur/*log &#123;
+<div class="hljs"><pre><code class="hljs shell">/var/log/murmur/*log &#123;
     su murmur murmur
     dateext
     rotate 4
@@ -310,44 +317,44 @@ WantedBy=multi-user.target</code></pre>
     postrotate
         /bin/systemctl reload murmur.service &gt; /dev/null 2&gt;/dev/null || true
     endscript
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>此处防火墙设置的端口需要和系统配置文件<code>/etc/murmur.ini</code>里面的端口保持一致。如果你在配置文件中修改了端口，请在以下文件中对端口也进行修改以保持一致。</p>
-<pre><code class="hljs shell">sudo vim /etc/firewalld/services/murmur.xml</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo vim /etc/firewalld/services/murmur.xml</code></pre></div>
 
 <p>默认端口为64738，写入以下内容，保存后退出：</p>
-<pre><code class="hljs shell">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+<div class="hljs"><pre><code class="hljs shell">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;service&gt;
         &lt;short&gt;Murmur&lt;/short&gt;
         &lt;description&gt;Mumble Server (Murmur)&lt;/description&gt;
         &lt;port protocol=&quot;tcp&quot; port=&quot;64738&quot; /&gt;&lt;!-- Reminder: Update /etc/murmur.ini so that it uses the same ports --&gt;
         &lt;port protocol=&quot;udp&quot; port=&quot;64738&quot; /&gt;
-&lt;/service&gt;</code></pre>
+&lt;/service&gt;</code></pre></div>
 
 <p>添加以下规则到防火墙并重载使其生效：</p>
-<pre><code class="hljs shell">sudo firewall-cmd --permanent --add-service=murmur
-sudo firewall-cmd --reload</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo firewall-cmd --permanent --add-service=murmur
+sudo firewall-cmd --reload</code></pre></div>
 
 <h3 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a>收尾工作</h3><p>更新系统使我们刚才的设置生效：</p>
-<pre><code class="hljs shell">sudo systemd-tmpfiles --create /etc/tmpfiles.d/murmur.conf
-sudo systemctl daemon-reload</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo systemd-tmpfiles --create /etc/tmpfiles.d/murmur.conf
+sudo systemctl daemon-reload</code></pre></div>
 
-<h3 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h3><pre><code class="hljs shell">sudo systemctl enable murmur.service</code></pre>
+<h3 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h3><div class="hljs"><pre><code class="hljs shell">sudo systemctl enable murmur.service</code></pre></div>
 
 <p>开始murmur服务：</p>
-<pre><code class="hljs shell">sudo systemctl start murmur.service</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo systemctl start murmur.service</code></pre></div>
 
 <p>停止murmur服务：</p>
-<pre><code class="hljs shell">sudo systemctl start murmur.service</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo systemctl start murmur.service</code></pre></div>
 
 <p>停止开机自启动：</p>
-<pre><code class="hljs shell">sudo systemctl disable murmur.service</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sudo systemctl disable murmur.service</code></pre></div>
 
 <h2 id="服务器管理员"><a href="#服务器管理员" class="headerlink" title="服务器管理员"></a>服务器管理员</h2><p>至少成功运行<code>murmur</code>服务一次，然后去log中找到密码，密码是第一次运行时自动生成的：</p>
-<pre><code class="hljs shell">vim /var/log/murmur/murmur.log</code></pre>
+<div class="hljs"><pre><code class="hljs shell">vim /var/log/murmur/murmur.log</code></pre></div>
 
 <p>其中<code>&lt;W&gt;2020-03-06 23:53:13.049 1 =&gt; Password for &#39;SuperUser&#39; set to &#39;PASSWORD&#39;</code>这一条写明了用户名<code>SuperUser</code>的密码是<code>PASSWORD</code>。</p>
-<h3 id="修改SuperUser密码"><a href="#修改SuperUser密码" class="headerlink" title="修改SuperUser密码"></a>修改SuperUser密码</h3><pre><code class="hljs shell">/usr/local/murmur/murmur.x86 -ini /etc/murmur.ini -supw Your_Password [srv]</code></pre>
+<h3 id="修改SuperUser密码"><a href="#修改SuperUser密码" class="headerlink" title="修改SuperUser密码"></a>修改SuperUser密码</h3><div class="hljs"><pre><code class="hljs shell">/usr/local/murmur/murmur.x86 -ini /etc/murmur.ini -supw Your_Password [srv]</code></pre></div>
 
 <p>替换其中的Your_Password为你自己的密码即可。</p>
 <h3 id="成为管理员"><a href="#成为管理员" class="headerlink" title="成为管理员"></a>成为管理员</h3><p>在成功运行了murmur服务，拿到了SuperUser密码后，打开Mumble客户端，完成证书的创建或者导入工作。在Mumble主界面选择<code>服务器</code>–&gt; <code>连接</code>–&gt; <code>添加</code>，在弹出的选项卡里填入以下内容：</p>
@@ -364,7 +371,7 @@ sudo systemctl daemon-reload</code></pre>
 <li>地址：<strong>mumble.demo.com</strong></li>
 <li>端口：<strong>64738</strong></li>
 <li>用户名：<strong>SuperUser</strong></li>
-<li>别名：<strong><a href="mailto:&#x53;&#117;&#112;&#101;&#x72;&#85;&#115;&#x65;&#114;&#64;&#109;&#117;&#109;&#98;&#x6c;&#x65;&#x2e;&#100;&#x65;&#x6d;&#111;&#46;&#99;&#111;&#x6d;">&#x53;&#117;&#112;&#101;&#x72;&#85;&#115;&#x65;&#114;&#64;&#109;&#117;&#109;&#98;&#x6c;&#x65;&#x2e;&#100;&#x65;&#x6d;&#111;&#46;&#99;&#111;&#x6d;</a></strong></li>
+<li>别名：<strong><a href="mailto:&#x53;&#x75;&#x70;&#x65;&#114;&#85;&#x73;&#101;&#114;&#64;&#109;&#x75;&#109;&#98;&#x6c;&#101;&#x2e;&#100;&#x65;&#109;&#111;&#x2e;&#x63;&#x6f;&#x6d;">&#x53;&#x75;&#x70;&#x65;&#114;&#85;&#x73;&#101;&#114;&#64;&#109;&#x75;&#109;&#98;&#x6c;&#101;&#x2e;&#100;&#x65;&#109;&#111;&#x2e;&#x63;&#x6f;&#x6d;</a></strong></li>
 </ul>
 <p>在弹出密码框时输入<code>SuperUser</code>的密码。</p>
 <p>在服务器列表中右键点击<code>Root</code>频道，选择<code>编辑</code>–&gt;<code>分组</code>：</p>
@@ -409,6 +416,12 @@ sudo systemctl daemon-reload</code></pre>
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2020/11/26/TeamSpeak-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E5%85%A8%E6%B5%81%E7%A8%8B%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B2020%E5%B9%B410%E6%9C%88%E7%89%88/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TeamSpeak 3 服务器架设全流程新手教程2020年10月版</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -425,38 +438,6 @@ sudo systemctl daemon-reload</code></pre>
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script type="text/javascript">
-    function loadValine() {
-      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
-        new Valine({
-          el: "#vcomments",
-          app_id: "AfYi10DptdiGyndq36YeRwNQ-MdYXbMMI",
-          app_key: "605ooESFjkBMH7kjWXjBwhdC",
-          placeholder: "说点什么",
-          path: window.location.pathname,
-          avatar: "retro",
-          meta: ["nick","mail","link"],
-          pageSize: "10",
-          lang: "zh-CN",
-          highlight: true,
-          recordIP: true,
-          serverURLs: "",
-        });
-      });
-    }
-    waitElementVisible('vcomments', loadValine);
-  </script>
-  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-              </article>
-            
           </article>
         </div>
       </div>
@@ -465,7 +446,7 @@ sudo systemctl daemon-reload</code></pre>
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -477,16 +458,15 @@ sudo systemctl daemon-reload</code></pre>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -507,13 +487,14 @@ sudo systemctl daemon-reload</code></pre>
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <script src="/js/duration.js"></script> </div> 
   </div>
   
   <div class="statistics">
@@ -547,10 +528,27 @@ sudo systemctl daemon-reload</code></pre>
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -565,8 +563,19 @@ sudo systemctl daemon-reload</code></pre>
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -574,96 +583,29 @@ sudo systemctl daemon-reload</code></pre>
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 2,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "在CentOS 7 x64中搭建Mumble语音服务器&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -677,6 +619,11 @@ sudo systemctl daemon-reload</code></pre>
 
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

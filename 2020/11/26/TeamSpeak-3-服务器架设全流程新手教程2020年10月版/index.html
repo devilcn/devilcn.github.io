@@ -19,7 +19,7 @@
   <meta name="keywords" content="">
   <title>TeamSpeak 3 服务器架设全流程新手教程2020年10月版 - Playsnakes Blog</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -29,11 +29,14 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +53,10 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.playsnakes.net","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0"></head>
@@ -150,12 +157,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/galaxy-3608029.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="TeamSpeak 3 服务器架设全流程新手教程2020年10月版">
               
             </span>
 
@@ -165,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-25 13:14" pubdate>
-        2020年10月25日 下午
+      <time datetime="2020-11-26 01:21" pubdate>
+        2020年11月26日 凌晨
       </time>
     </span>
   
@@ -223,17 +230,17 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">TeamSpeak 3 服务器架设全流程新手教程2020年10月版</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：12 天前
+                  本文最后更新于：4 天前
                 
               </p>
             
-            <div class="markdown-body" id="post-body">
+            <div class="markdown-body">
               <p>众所周知我们在和狐朋狗友并(互)肩(相)作(坑)战(害)的时候交流和沟通极其重要，否则一个不小心就是闭麦听歌一人九杀哀鸿遍野举目无亲的人间悲剧。队友之间的交流工具除了游戏内语音(In-game VoIP)之外那就是各种桌面通讯软件了。要说明白我为什么选择<code>TeamSpeak</code>这款软件，那就要盘点一下曾使用过的同类软件了（不全，但多少具有一些代表性）。</p>
 <ol>
 <li><strong><code>YY语音</code>**。YY作为历史悠久的老牌通讯软件（2008年发布[1]），它的用户群体非常大，通讯难度也不高，质量还是不错的。但我的亲身体验是随着YY的一步步壮大，各种乱七八糟的广告铺天盖地洒满你的桌面，甚至推送的一部分广告都达到了有碍观瞻的地步（本来就蔡，你个憨憨还弄这么多广告烦我）。总体来看，</strong><code>YY语音</code>**带来的用户体验非常差。</li>
@@ -251,53 +258,53 @@
 <ol>
 <li>更新系统，这可能要花些时间</li>
 </ol>
-<pre><code class="hljs linux">yum update -y</code></pre>
+<div class="hljs"><pre><code class="hljs linux">yum update -y</code></pre></div>
 
 <ol start="2">
 <li>安装必须工具</li>
 </ol>
-<pre><code class="hljs linux">yum install vim wget perl tar net-tools bzip2 -y</code></pre>
+<div class="hljs"><pre><code class="hljs linux">yum install vim wget perl tar net-tools bzip2 -y</code></pre></div>
 
 <h2 id="2-开始安装"><a href="#2-开始安装" class="headerlink" title="2. 开始安装"></a>2. 开始安装</h2><ol>
 <li>首先需要创建一个普通用户<code>teamspeak</code>，密码请按自己需求设置</li>
 </ol>
-<pre><code class="hljs linux">useradd teamspeak
-passwd teamspeak</code></pre>
+<div class="hljs"><pre><code class="hljs linux">useradd teamspeak
+passwd teamspeak</code></pre></div>
 
 <ol start="2">
 <li>切换至<code>/opt</code>目录下</li>
 </ol>
-<pre><code class="hljs linux">cd &#x2F;opt</code></pre>
+<div class="hljs"><pre><code class="hljs linux">cd &#x2F;opt</code></pre></div>
 
 <ol start="3">
-<li>下载最新服务端软件包（目前最新版本3.12.1，以最新版本为准）</li>
+<li>下载最新服务端软件包（目前最新版本3.13.2，以最新版本为准）</li>
 </ol>
-<pre><code class="hljs linux">wget https:&#x2F;&#x2F;files.teamspeak-services.com&#x2F;releases&#x2F;server&#x2F;3.12.1&#x2F;teamspeak3-server_linux_amd64-3.12.1.tar.bz2</code></pre>
+<div class="hljs"><pre><code class="hljs linux">wget https:&#x2F;&#x2F;files.teamspeak-services.com&#x2F;releases&#x2F;server&#x2F;3.13.2&#x2F;teamspeak3-server_linux_amd64-3.13.2.tar.bz2</code></pre></div>
 
 <ol start="4">
 <li>解压最新服务端软件包并删除压缩包</li>
 </ol>
-<pre><code class="hljs linux">tar -xjvf teamspeak3-server_linux_amd64-3.12.1.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.12.1.tar.bz2</code></pre>
+<div class="hljs"><pre><code class="hljs linux">tar -xjvf teamspeak3-server_linux_amd64-3.13.2.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.13.2.tar.bz2</code></pre></div>
 
 <ol start="5">
 <li>赋予普通用户<code>teamspeak</code>权限，并进入该目录</li>
 </ol>
-<pre><code class="hljs linux">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; cd &#x2F;opt&#x2F;teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak</code></pre>
+<div class="hljs"><pre><code class="hljs linux">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; cd &#x2F;opt&#x2F;teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak</code></pre></div>
 
 <h2 id="3-配置与运行"><a href="#3-配置与运行" class="headerlink" title="3. 配置与运行"></a>3. 配置与运行</h2><ol>
 <li>在开始之前，需要先同意<code>TeamSpeak</code>许可条款</li>
 </ol>
-<pre><code class="hljs linux">touch .ts3server_license_accepted</code></pre>
+<div class="hljs"><pre><code class="hljs linux">touch .ts3server_license_accepted</code></pre></div>
 
 <ol start="2">
 <li>自动配置数据库并启动<code>TeamSpeak</code>服务器</li>
 </ol>
-<pre><code class="hljs linux">.&#x2F;ts3server_startscript.sh start</code></pre>
+<div class="hljs"><pre><code class="hljs linux">.&#x2F;ts3server_startscript.sh start</code></pre></div>
 
 <ol start="3">
 <li>屏幕上会出现两条<code>IMPORTANT</code>的信息，请注意保管并记牢！其中<code>Token</code>是激活服务器管理员的重要凭证！</li>
 </ol>
-<pre><code class="hljs linux">[teamspeak@vultr teamspeak3-server_linux_amd64]$ .&#x2F;ts3server_startscript.sh start
+<div class="hljs"><pre><code class="hljs linux">[teamspeak@vultr teamspeak3-server_linux_amd64]$ .&#x2F;ts3server_startscript.sh start
 Starting the TeamSpeak 3 server
 TeamSpeak 3 server started, for details please view the log file
 [teamspeak@vultr teamspeak3-server_linux_amd64]$ 
@@ -318,7 +325,7 @@ TeamSpeak 3 server started, for details please view the log file
 
        token&#x3D;rNB3AHfFblRdkSwuMTXyrCGIdFuBn9SOdAt2V3HW
 ------------------------------------------------------------------
-</code></pre>
+</code></pre></div>
 
 
 
@@ -326,7 +333,7 @@ TeamSpeak 3 server started, for details please view the log file
 <ol>
 <li>首先找到 <code>default zone</code></li>
 </ol>
-<pre><code class="hljs linux">firewall-cmd --get-default-zone</code></pre>
+<div class="hljs"><pre><code class="hljs linux">firewall-cmd --get-default-zone</code></pre></div>
 
 <ol start="2">
 <li>酌情打开与<code>TeamSpeak</code>服务相关的端口</li>
@@ -339,26 +346,26 @@ TeamSpeak 3 server started, for details please view the log file
 <li>41144/tcp for TSDNS (optional)</li>
 </ul>
 </blockquote>
-<pre><code class="hljs linux">firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;9987&#x2F;udp
+<div class="hljs"><pre><code class="hljs linux">firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;9987&#x2F;udp
 firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;10011&#x2F;tcp
 firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;30033&#x2F;tcp
-firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;41144&#x2F;tcp</code></pre>
+firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;41144&#x2F;tcp</code></pre></div>
 
 <ol start="3">
 <li>重载<code>firewalld</code>以使其生效</li>
 </ol>
-<pre><code class="hljs linux">firewall-cmd --reload</code></pre>
+<div class="hljs"><pre><code class="hljs linux">firewall-cmd --reload</code></pre></div>
 
 <h2 id="5-自启动配置"><a href="#5-自启动配置" class="headerlink" title="5. 自启动配置"></a>5. 自启动配置</h2><ol>
 <li>以<code>root</code>身份创建并编辑文件</li>
 </ol>
-<pre><code class="hljs linux">SU root
-vim &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;teamspeak.service</code></pre>
+<div class="hljs"><pre><code class="hljs linux">SU root
+vim &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;teamspeak.service</code></pre></div>
 
 <ol start="2">
 <li>在该文件中写入如下内容：（按<code>i</code>进入编辑模式，编辑完成后按<code>ESC</code>退出编辑模式，接着输入<code>:wq</code>保存并退出vim编辑器）</li>
 </ol>
-<pre><code class="hljs config">[Unit]
+<div class="hljs"><pre><code class="hljs config">[Unit]
 Description&#x3D;Teamspeak, The most superior online voice communication solution.
 After&#x3D;network.target
 
@@ -374,26 +381,26 @@ RestartSec&#x3D;15
 Restart&#x3D;always
 
 [Install]
-WantedBy&#x3D;multi-user.target</code></pre>
+WantedBy&#x3D;multi-user.target</code></pre></div>
 
 <ol start="3">
 <li><code>systemd</code>需要被重新加载以生效</li>
 </ol>
-<pre><code class="hljs linux">systemctl daemon-reload</code></pre>
+<div class="hljs"><pre><code class="hljs linux">systemctl daemon-reload</code></pre></div>
 
 <ol start="4">
 <li>开启服务自启动</li>
 </ol>
-<pre><code class="hljs linux">systemctl enable teamspeak.service</code></pre>
+<div class="hljs"><pre><code class="hljs linux">systemctl enable teamspeak.service</code></pre></div>
 
 <p><em>启动 <code>TeamSpeak</code>：</em></p>
-<pre><code class="hljs linux">systemctl start teamspeak.service</code></pre>
+<div class="hljs"><pre><code class="hljs linux">systemctl start teamspeak.service</code></pre></div>
 
 <p><em>停止 <code>TeamSpeak</code>：</em></p>
-<pre><code class="hljs linux">systemctl stop teamspeak.service</code></pre>
+<div class="hljs"><pre><code class="hljs linux">systemctl stop teamspeak.service</code></pre></div>
 
 <p><em>重启 <code>TeamSpeak</code>：</em></p>
-<pre><code class="hljs linux">systemctl restart teamspeak.service</code></pre>
+<div class="hljs"><pre><code class="hljs linux">systemctl restart teamspeak.service</code></pre></div>
 
 <h2 id="6-TSDNS域名设置"><a href="#6-TSDNS域名设置" class="headerlink" title="6. TSDNS域名设置"></a>6. TSDNS域名设置</h2><p>首先你需要拥有一个顶级域名或者可以配置的二级域名。这里以顶级域名为例：</p>
 <blockquote>
@@ -402,15 +409,15 @@ WantedBy&#x3D;multi-user.target</code></pre>
 <ol>
 <li>转到<code>tsdns</code>文件夹</li>
 </ol>
-<pre><code class="hljs linux">cd tsdns</code></pre>
+<div class="hljs"><pre><code class="hljs linux">cd tsdns</code></pre></div>
 
 <ol start="2">
 <li>创建文件<code>tsdns_settings.ini</code> ：（按<code>i</code>进入编辑模式，编辑完成后按<code>ESC</code>退出编辑模式，接着输入<code>:wq</code>保存并退出vim编辑器）</li>
 </ol>
-<pre><code class="hljs linux">vim tsdns_settings.ini</code></pre>
+<div class="hljs"><pre><code class="hljs linux">vim tsdns_settings.ini</code></pre></div>
 
 <p>在该文件中，以下面的格式配置域名（其中域名和IP地址请自行更换）：</p>
-<pre><code class="hljs config">ts.demo.com&#x3D;1.1.1.1:$PORT</code></pre>
+<div class="hljs"><pre><code class="hljs config">ts.demo.com&#x3D;1.1.1.1:$PORT</code></pre></div>
 
 <ol start="3">
 <li>接下来去域名DNS服务商增加域名的<code>SRV</code>记录，此处以<code>cloudflare.com</code>为例，其它DNS服务商类似。其中需要将<code>1.1.1.1</code>替换为你的服务器地址，将<code>demo.com</code>替换为你的域名。</li>
@@ -466,15 +473,15 @@ WantedBy&#x3D;multi-user.target</code></pre>
 <ol start="4">
 <li>后台运行<code>tsdns</code>服务：</li>
 </ol>
-<pre><code class="hljs linux">screen -AmdS tsdns .&#x2F;tsdnsserver</code></pre>
+<div class="hljs"><pre><code class="hljs linux">screen -AmdS tsdns .&#x2F;tsdnsserver</code></pre></div>
 
 <ol start="5">
 <li>将<code>tsdns</code>添加至开机自启动计划任务</li>
 </ol>
-<pre><code class="hljs linux">crontab -e</code></pre>
+<div class="hljs"><pre><code class="hljs linux">crontab -e</code></pre></div>
 
 <p>在打开的文件末尾添加如下字句：</p>
-<pre><code class="hljs linux">@reboot &#x2F;opt&#x2F;teamspeak3-server_linux_amd64&#x2F;tsdns&#x2F;tsdnsserver</code></pre>
+<div class="hljs"><pre><code class="hljs linux">@reboot &#x2F;opt&#x2F;teamspeak3-server_linux_amd64&#x2F;tsdns&#x2F;tsdnsserver</code></pre></div>
 
 <p>保存并退出后可通过<code>crontab -l</code>来列出当前生效的计划任务。</p>
 <p>到这里为止，服务器的架设就都完成了，接下来请使用TeamSpeak的客户端连接自己的服务器吧！</p>
@@ -519,18 +526,12 @@ WantedBy&#x3D;multi-user.target</code></pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/25/TeamSpeak-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E4%B8%A2%E5%A4%B1%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F7%E6%AD%A5%E5%B8%AE%E4%BD%A0%E6%89%BE%E5%9B%9E/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TeamSpeak 3 服务器管理员权限丢失了怎么办？7步帮你找回</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/25/CentOS-7-x64-%E5%88%A9%E7%94%A8%E5%AE%9D%E5%A1%94%E5%AE%89%E8%A3%85gitea/">
-                        <span class="hidden-mobile">CentOS 7 x64 利用宝塔安装gitea</span>
+                      <a href="/2020/10/25/%E5%9C%A8CentOS-7-x64%E4%B8%AD%E6%90%AD%E5%BB%BAMumble%E8%AF%AD%E9%9F%B3%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                        <span class="hidden-mobile">在CentOS 7 x64中搭建Mumble语音服务器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -541,38 +542,6 @@ WantedBy&#x3D;multi-user.target</code></pre>
             </div>
 
             
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script type="text/javascript">
-    function loadValine() {
-      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
-        new Valine({
-          el: "#vcomments",
-          app_id: "AfYi10DptdiGyndq36YeRwNQ-MdYXbMMI",
-          app_key: "605ooESFjkBMH7kjWXjBwhdC",
-          placeholder: "说点什么",
-          path: window.location.pathname,
-          avatar: "retro",
-          meta: ["nick","mail","link"],
-          pageSize: "10",
-          lang: "zh-CN",
-          highlight: true,
-          recordIP: true,
-          serverURLs: "",
-        });
-      });
-    }
-    waitElementVisible('vcomments', loadValine);
-  </script>
-  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-              </article>
-            
           </article>
         </div>
       </div>
@@ -581,7 +550,7 @@ WantedBy&#x3D;multi-user.target</code></pre>
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -593,16 +562,15 @@ WantedBy&#x3D;multi-user.target</code></pre>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -623,13 +591,14 @@ WantedBy&#x3D;multi-user.target</code></pre>
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <script src="/js/duration.js"></script> </div> 
   </div>
   
   <div class="statistics">
@@ -663,10 +632,27 @@ WantedBy&#x3D;multi-user.target</code></pre>
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -681,8 +667,19 @@ WantedBy&#x3D;multi-user.target</code></pre>
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -690,96 +687,29 @@ WantedBy&#x3D;multi-user.target</code></pre>
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 2,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "TeamSpeak 3 服务器架设全流程新手教程2020年10月版&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -793,6 +723,11 @@ WantedBy&#x3D;multi-user.target</code></pre>
 
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 
