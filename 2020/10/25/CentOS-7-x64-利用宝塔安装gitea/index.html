@@ -236,7 +236,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 个月前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -272,11 +272,10 @@ sudo yum install  git2u-all</code></pre></div>
 <p>  如上所述，当前版本Git是2.16.5，如果要安装最新的Git版本，最好是下载源代码并安装。</p>
 <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ul>
 <li><p>在宝塔中新建网站code.demo.com，创建数据库MySQL，字符集选择utf8_general_ci</p>
-<p><img src="Snipaste_2020-02-22_12-01-26.png" srcset="/img/loading.gif" alt="Snipaste_2020-02-22_12-01-26"></p>
 <p>远程下载gitea</p>
 <div class="hljs"><pre><code class="hljs shell">cd /www/wwwroot/code.demo.com/
-wget -O gitea https://dl.gitea.io/gitea/master/gitea-master-linux-amd64
-chmod +x gitea</code></pre></div>
+  wget -O gitea https://dl.gitea.io/gitea/master/gitea-master-linux-amd64
+  chmod +x gitea</code></pre></div>
 
 <p>成功之后运行gitea，访问<code>http://ip:3000</code>即可测试。</p>
 <div class="hljs"><pre><code class="hljs shell">./gitea web</code></pre></div>
@@ -285,11 +284,10 @@ chmod +x gitea</code></pre></div>
 </li>
 </ul>
 <ul>
-<li>在DNS服务商处绑定code.demo.com到服务器IP地址后，打开宝塔面板网站的SSL，使用Let’s Encrypt进行证书签名</li>
-</ul>
-<p><img src="Snipaste_2020-02-25_21-54-52.png" srcset="/img/loading.gif" alt="Snipaste_2020-02-25_21-54-52"></p>
-<ul>
-<li>接着打开宝塔网站的配置文件，示例配置文件内容如下：</li>
+<li><p>在DNS服务商处绑定code.demo.com到服务器IP地址后，打开宝塔面板网站的SSL，使用Let’s Encrypt进行证书签名</p>
+</li>
+<li><p>接着打开宝塔网站的配置文件，示例配置文件内容如下：</p>
+</li>
 </ul>
 <div class="hljs"><pre><code class="hljs shell">server
 &#123;
